@@ -1,0 +1,31 @@
+rng('default')
+stddev = 1.5;
+mean = 0;
+%set1 = stddev.*unifrnd(100,1) + mean;
+%set2 = stddev.*unifrnd(1000,1) + mean;
+%set3 = stddev.*unifrnd(100000,1) + mean;
+set1 = stddev.*rand(100,1) + mean;
+set2 = stddev.*rand(1000,1) + mean;
+set3 = stddev.*rand(100000,1) + mean;
+%set4=unifrnd(0,1000);
+%hold on;
+h1=histfit(set1);
+set(h1(1),'facecolor',[0.5,0.2,0.2]); 
+set(h1(1),'FaceAlpha',0.3);
+%set(h1(2),'LegendInformation','IconDisplayStyle','off');
+%legend('Sample set');
+hold on
+h2=histfit(set2);
+set(h2(1),'facecolor',[0.2,0.5,0.5]);
+set(h2(1),'FaceAlpha',0.4);
+%hold off
+%hold on
+h3=histfit(set3);
+
+set(h3(1),'facecolor',[0.5,0.5,0.5]);
+set(h3(1),'FaceAlpha',0.4);
+hold off
+
+h = histogram(set3,'Normalization','pdf');
+grid = linspace(min(set3),max(set3));
+line(grid,1/,'color','r')
